@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        .score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <p class="score">Punteggio massimo: {{ max_score }}</p>
+    <form action="/quiz" method="POST">
+        {% for question, options, id in question_options %}
+            <div>
+                <p>{{ question }}</p>
+                {% for option in options %}
+                    <label>
+                        <input type="radio" name="{{ id }}" value="{{ option }}">
+                        {{ option }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Invia</button>
+    </form>
+    <footer>
+        <p>Sviluppato da Pradeeban Muralidaran</p>
+    </footer>
+</body>
+</html>
